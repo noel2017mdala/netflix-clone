@@ -8,7 +8,7 @@ type Props = {
   netflixOriginals: Movie[];
 };
 
-const index = ({ netflixOriginals }: Props) => {
+const Index = ({ netflixOriginals }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ const index = ({ netflixOriginals }: Props) => {
   );
 };
 
-export default index;
+export default Index;

@@ -9,7 +9,7 @@ type Props = {
   //   movie: Movie| DocumentData;
 };
 
-const index = ({ title, movies }: Props) => {
+const Index = ({ title, movies }: Props) => {
   const rowRef = useRef<HTMLDivElement | null>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -66,4 +66,4 @@ const index = ({ title, movies }: Props) => {
   );
 };
 
-export default index;
+export default Index;
