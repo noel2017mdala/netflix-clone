@@ -12,7 +12,7 @@ interface Inputs {
 }
 
 const Index = (props: Props) => {
-  const [login, setLogin] = useState<boolean>();
+  const [login, setLogin] = useState<boolean>(true);
   const { signIn, signUp } = useAuth();
   const {
     register,
@@ -33,6 +33,8 @@ const Index = (props: Props) => {
       await signUp(email, password);
     }
   };
+
+  console.log(login);
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -62,7 +64,9 @@ const Index = (props: Props) => {
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="text-4xl font-semibold">Sign In</h1>
+        <h1 className="text-4xl font-semibold">
+          {login ? "Sign In" : "Sign Up"}
+        </h1>
 
         <div className="space-y-8">
           <label className="inline-block w-full">
@@ -103,7 +107,21 @@ const Index = (props: Props) => {
         >
           Sign In
         </button>
-
+      </form>
+      {!login ? (
+        <div className="text-[gray]">
+          Already have an account ?
+          <button
+            type="submit"
+            className="text-white hover:underline mx-2"
+            onClick={() => {
+              setLogin(true);
+            }}
+          >
+            Sign in now
+          </button>
+        </div>
+      ) : (
         <div className="text-[gray]">
           New to netflix ?
           <button
@@ -116,7 +134,7 @@ const Index = (props: Props) => {
             Sign up now
           </button>
         </div>
-      </form>
+      )}
     </div>
   );
 };
