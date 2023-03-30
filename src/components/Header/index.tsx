@@ -2,11 +2,13 @@ import netflixImage from "../../../public/images/netflix.png";
 import { MagnifyingGlassIcon, BellIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useAuth from "@/hooks/UserAuth";
 
 type Props = {};
 
 const Index = (props: Props) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,13 +49,16 @@ const Index = (props: Props) => {
         <MagnifyingGlassIcon className="hidden h-6 w-6 sm:inline cursor-pointer" />
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6 cursor-pointer" />
-        <Link href="/account">
-          <img
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointed rounded"
-          />
-        </Link>
+        {/* <Link href="/account">
+        
+        </Link> */}
+
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="cursor-pointed rounded"
+        />
       </div>
     </header>
   );

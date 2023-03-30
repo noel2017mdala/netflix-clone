@@ -6,6 +6,10 @@ import Banner from "../components/Banner";
 import requests from "../../utils/requests";
 import { Genre, Movie, Element } from "../../types/types";
 import Row from "../components/Rows";
+import useAuth from "@/hooks/UserAuth";
+import { useRecoilValue } from "recoil";
+import { modalState } from "../../atoms/modalAtom";
+import Modal from "@/components/Modals/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +34,9 @@ const Home = ({
   romanceMovies,
   documentaries,
 }: Props) => {
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalState);
+  if (loading) return "Loading";
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
       <Head>
@@ -55,6 +62,8 @@ const Home = ({
         </section>
       </main>
       {/* {Modal} */}
+
+      {showModal && <Modal />}
     </div>
   );
 };

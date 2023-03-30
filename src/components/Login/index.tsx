@@ -26,15 +26,12 @@ const Index = (props: Props) => {
   // };
   // const signIn = async (email: string, password: string) => {};
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-    console.log(login);
     if (login) {
       await signIn(email, password);
     } else {
       await signUp(email, password);
     }
   };
-
-  console.log(login);
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
